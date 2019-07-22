@@ -1,0 +1,16 @@
+metadata:
+  name: default
+  namespace: gloo-system
+virtualHost:
+  name: gloo-system.default
+  routes:
+  - matcher:
+      prefix: /petstore
+    routeAction:
+      single:
+        upstream:
+          name: petstore
+          namespace: gloo-system
+    routePlugins:
+      prefixRewrite:
+        prefixRewrite: /api/pets
