@@ -11,13 +11,13 @@ services:
     ports:
     - "9977:9977"
 
-  discovery:
-    image: "${GLOO_REPO:-quay.io/solo-io}/discovery:${GLOO_VERSION:-0.17.4}"
-    working_dir: /
-    command:
-    - "--dir=/data/"
-    volumes:
-    - ./data:/data/
+  # discovery:
+  #   image: "${GLOO_REPO:-quay.io/solo-io}/discovery:${GLOO_VERSION:-0.17.4}"
+  #   working_dir: /
+  #   command:
+  #   - "--dir=/data/"
+  #   volumes:
+  #   - ./data:/data/
 
   gateway:
     image: "${GLOO_REPO:-quay.io/solo-io}/gateway:${GLOO_VERSION:-0.17.4}"
