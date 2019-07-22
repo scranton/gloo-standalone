@@ -1,4 +1,5 @@
 version: '3'
+
 services:
 
   gloo:
@@ -10,6 +11,7 @@ services:
     - ./data:/data/
     ports:
     - "9977:9977"
+    restart: always
 
   # discovery:
   #   image: "${GLOO_REPO:-quay.io/solo-io}/discovery:${GLOO_VERSION:-0.17.4}"
@@ -18,6 +20,7 @@ services:
   #   - "--dir=/data/"
   #   volumes:
   #   - ./data:/data/
+  #   restart: always
 
   gateway:
     image: "${GLOO_REPO:-quay.io/solo-io}/gateway:${GLOO_VERSION:-0.17.4}"
@@ -26,6 +29,7 @@ services:
     - "--dir=/data/"
     volumes:
     - ./data:/data/
+    restart: always
 
   gateway-proxy:
     image: ${GLOO_REPO:-quay.io/solo-io}/gloo-envoy-wrapper:${GLOO_VERSION:-0.17.4}
@@ -37,8 +41,10 @@ services:
     - "8080:8080"
     - "8443:8443"
     - "19000:19000"
+    restart: always
 
   petstore:
     image: ${GLOO_REPO:-quay.io/solo-io}/petstore:v1
     ports:
     - "8090:8080"
+    restart: always
