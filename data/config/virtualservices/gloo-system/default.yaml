@@ -25,7 +25,7 @@ virtualHost:
       single:
         destinationSpec:
           rest:
-            functionName: findPetById
+            functionName: findPets
             parameters: {}
         upstream:
           name: petstore
